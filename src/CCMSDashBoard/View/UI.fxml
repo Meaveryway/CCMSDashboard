@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="parent" maxHeight="1.7976931348623157E308" minHeight="700.0" minWidth="1224.0" prefHeight="700.0" prefWidth="1224.0" style="-fx-background-color: #ffffff;" styleClass="parent" stylesheets="../Ressources/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CCMSDashBoard.Controllers.UIController">
+<AnchorPane fx:id="parent" maxHeight="1.7976931348623157E308" minHeight="700.0" minWidth="1224.0" prefHeight="700.0" prefWidth="1224.0" style="-fx-background-color: #ffffff;" styleClass="parent" stylesheets="../Ressources/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CCMSDashBoard.Controllers.UIController">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../Ressources/stylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -184,13 +184,14 @@
             </HBox>
             <TableView fx:id="tableView" editable="true" prefHeight="349.0" prefWidth="924.0" stylesheets="@../Ressources/stylesheet.css" VBox.vgrow="ALWAYS">
               <columns>
-                <TableColumn prefWidth="75.0" text="Code" />
-                <TableColumn prefWidth="159.0" text="Horodate" />
-                  <TableColumn prefWidth="75.0" text="Lieu" />
-                  <TableColumn prefWidth="148.0" text="Etat" />
-                  <TableColumn prefWidth="75.0" text="Police" />
-                  <TableColumn prefWidth="75.0" text="Securite Civile" />
-                  <TableColumn prefWidth="75.0" text="Ambulance" />
+                <TableColumn fx:id="code" prefWidth="75.0" text="Code" />
+                <TableColumn fx:id="dateTime" prefWidth="159.0" text="Horodate" />
+                  <TableColumn fx:id="location" prefWidth="75.0" text="Lieu" />
+                  <TableColumn fx:id="status" prefWidth="148.0" text="Etat" />
+                  <TableColumn fx:id="policeStatus" prefWidth="75.0" text="Police" />
+                  <TableColumn fx:id="civilSecurityStatus" prefWidth="75.0" text="Securite Civile" />
+                  <TableColumn fx:id="medicsStatus" prefWidth="75.0" text="Ambulance" />
+                  <TableColumn fx:id="towingStatus" prefWidth="75.0" text="Remorque" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -62,7 +62,7 @@
 .table-view .cell{
    -fx-cell-size: 35;
   -fx-alignment: center-left;
-  -fx-background-color: #29292D;
+  #-fx-background-color: #29292D;
   -fx-border-color: #29292D;
   -fx-text-fill: lightgray;
   -fx-alignment: CENTER_LEFT;

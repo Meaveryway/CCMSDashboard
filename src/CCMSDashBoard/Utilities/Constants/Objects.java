@@ -1,6 +1,8 @@
 package CCMSDashBoard.Utilities.Constants;
 
 import CCMSDashBoard.Model.Accident;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 /**
@@ -11,8 +13,8 @@ public class Objects
 
 
 
-    public static ArrayList<Accident> Accidents = new ArrayList<>(); //Liste des accidents en cours
-
+    //public static ArrayList<Accident> Accidents = new ArrayList<>(); //Liste des accidents en cours
+    public static ObservableList<Accident> Accidents;
 
    /*
 

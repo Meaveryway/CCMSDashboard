@@ -5,16 +5,29 @@ package CCMSDashBoard.Model;
  */
 public class Location
 {
-    private String name; //just the big name of the address
     private String address; //full address
     private double latitude;
     private double longitude;
 
-    public Location(String name, String address, double latitude, double longitude)
+    public Location(String address, double latitude, double longitude)
     {
-        this.name = name;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public double getLatitude()
+    {
+        return latitude;
+    }
+
+    public double getLongitude()
+    {
+        return longitude;
     }
 }

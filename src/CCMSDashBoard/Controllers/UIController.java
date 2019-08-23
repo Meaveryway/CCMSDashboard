@@ -1,28 +1,51 @@
 package CCMSDashBoard.Controllers;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import CCMSDashBoard.Launch;
+import CCMSDashBoard.Model.Accident;
+import CCMSDashBoard.Model.Location;
+import CCMSDashBoard.Utilities.Constants.Objects;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.RotateTransition;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
-public class UIController implements Initializable {
+import javax.swing.text.TabableView;
 
+import static CCMSDashBoard.Utilities.Protocols.InstanceData.loadInstanceAccidents;
+
+public class UIController implements Initializable
+{
     private double xOffset = 0;
     private double yOffset = 0;
-    @FXML
-    private AnchorPane parent;
-    @FXML
-    private FontAwesomeIcon bellIcon;
+    @FXML private AnchorPane parent;
+
+    @FXML private FontAwesomeIcon bellIcon;
+
+    @FXML private TableView<Accident> tableView;
+
+    @FXML private TableColumn<Accident, String> code;
+    @FXML private TableColumn<Accident, String> location;
+    @FXML private TableColumn<Accident, String> dateTime;
+    @FXML private TableColumn<Accident, String> status;
+
+    @FXML private TableColumn<Accident, String> policeStatus;
+    @FXML private TableColumn<Accident, String> medicsStatus;
+    @FXML private TableColumn<Accident, String> civilSecurityStatus;
+    @FXML private TableColumn<Accident, String> towingStatus;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -48,6 +71,23 @@ public class UIController implements Initializable {
         transition.play();
         //bellIcon.setDisable(true);
 
+        code.setCellValueFactory(new PropertyValueFactory<Accident, String>("code"));
+        location.setCellValueFactory(new PropertyValueFactory<Accident, String>("location"));
+        dateTime.setCellValueFactory(new PropertyValueFactory<Accident, String>("dateTime"));
+        status.setCellValueFactory(new PropertyValueFactory<Accident, String>("generalStatus"));
+
+        policeStatus.setCellValueFactory(new PropertyValueFactory<Accident, String>("policeStatus"));
+        civilSecurityStatus.setCellValueFactory(new PropertyValueFactory<Accident, String>("civilSecurityStatus"));
+        medicsStatus.setCellValueFactory(new PropertyValueFactory<Accident, String>("medicsStatus"));
+        towingStatus.setCellValueFactory(new PropertyValueFactory<Accident, String>("towingStatus"));
+
+        loadInstanceAccidents();
+        tableView.setItems(Objects.Accidents);
+
+        Location momentLocation = new Location("Cité 5 Juillet, Bab Ezzouar", 45.765, 67.232);
+        LocalDateTime momentDateTime = LocalDateTime.now();
+        Accident momentAccident = new Accident("2019GH", momentLocation, momentDateTime,"Accidents grave avec 3 blessés", false, true);
+        tableView.getItems().add(momentAccident);
     }
 
     private void makeStageDrageable() {

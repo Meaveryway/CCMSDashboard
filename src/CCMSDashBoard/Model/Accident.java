@@ -1,5 +1,7 @@
 package CCMSDashBoard.Model;
 
+import CCMSDashBoard.Utilities.Constants.Values;
+
 import java.sql.Time;
 import java.time.LocalDateTime;
 
@@ -37,9 +39,9 @@ public class Accident
         this.towingStatus = Status.NOTNOTIFIED;
     }
 
-    public Status getGeneralStatus()
+    public String getGeneralStatus()
     {
-        return generalStatus;
+        return generalStatus.StatusText();
     }
 
     public void setGeneralStatus(Status generalStatus)
@@ -47,9 +49,9 @@ public class Accident
         this.generalStatus = generalStatus;
     }
 
-    public Status getPoliceStatus()
+    public String getPoliceStatus()
     {
-        return policeStatus;
+        return policeStatus.StatusText();
     }
 
     public void setPoliceStatus(Status policeStatus)
@@ -57,8 +59,8 @@ public class Accident
         this.policeStatus = policeStatus;
     }
 
-    public Status getCivilSecurityStatus() {
-        return civilSecurityStatus;
+    public String getCivilSecurityStatus() {
+        return civilSecurityStatus.StatusText();
     }
 
     public void setCivilSecurityStatus(Status civilSecurityStatus)
@@ -66,9 +68,9 @@ public class Accident
         this.civilSecurityStatus = civilSecurityStatus;
     }
 
-    public Status getMedicsStatus()
+    public String getMedicsStatus()
     {
-        return medicsStatus;
+        return medicsStatus.StatusText();
     }
 
     public void setMedicsStatus(Status medicsStatus)
@@ -76,8 +78,8 @@ public class Accident
         this.medicsStatus = medicsStatus;
     }
 
-    public Status getTowingStatus() {
-        return towingStatus;
+    public String getTowingStatus() {
+        return towingStatus.StatusText();
     }
 
     public void setTowingStatus(Status towingStatus)
@@ -85,8 +87,28 @@ public class Accident
         this.towingStatus = towingStatus;
     }
 
-    public LocalDateTime getDateTime()
+    public String getDateTime()
     {
-        return dateTime;
+        return dateTime.format(Values.DATETIMEFORMAT);
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getLocation() {
+        return location.getAddress();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isRequiresRettungsgasse() {
+        return requiresRettungsgasse;
+    }
+
+    public boolean isRequiresPanels() {
+        return requiresPanels;
     }
 }
