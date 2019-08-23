@@ -17,6 +17,7 @@ public class Launch extends Application {
         //stage.initStyle(StageStyle.UNDECORATED); //To hide control buttons
         this.stage = stage;
         stage.show();
+
     }
 
     public static void main(String[] args) {

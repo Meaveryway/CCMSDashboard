@@ -1,40 +1,23 @@
 package CCMSDashBoard.Utilities.Constants;
 
-import CCMSDashBoard.Model.ProduitRestitution;
-
-import java.io.File;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import CCMSDashBoard.Model.Accident;
+import java.util.ArrayList;
 
 /**
  * Created by Meave Dregonhive on 18/04/2018.
  */
-public class STATICS {
-
-    public final static File BDD = new File ("/Users/macsamir/Desktop/BDD.txt");
-    public final static File BDDPharmacies = new File ("/Users/macsamir/Desktop/BDDPharmacies.txt");
+public class Objects
+{
 
 
 
-    public static DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yy");
-    public static DateTimeFormatter DATETIMEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy    HH:mm");
-    public static ArrayList<ProduitRestitution> Restitues = new ArrayList<>(); //BDD des medocs
-
-    public static int posRestitue(int ID)
-    {
-        ProduitRestitution moment = new ProduitRestitution();
-        moment.setID(ID);
-        System.out.println("Found it " + Restitues.contains(moment));
-        return Restitues.indexOf(moment);
-    }
-
-   /* public static ArrayList<ProduitRestitution> RestituesEnAttente = new ArrayList<>(); //BDD des medocs en attende de confirmation
+    public static ArrayList<Accident> Accidents = new ArrayList<>(); //Liste des accidents en cours
 
 
-    public static ArrayList<Pharmacie> PHARMACIES = new ArrayList<>(); //BDD des pharmacies
+   /*
 
 
-    public static ArrayList<Pharmacie> UTILISATEURSCONNECTES = new ArrayList<>();
+
 
     public static void sortUTILISATEURSCONNECTES()
     {
