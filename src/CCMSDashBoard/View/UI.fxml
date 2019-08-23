@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="parent" maxHeight="1.7976931348623157E308" minHeight="700.0" minWidth="1224.0" prefHeight="700.0" prefWidth="1224.0" style="-fx-background-color: #ffffff;" styleClass="parent" stylesheets="../Ressources/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CCMSDashBoard.Controllers.UIController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" stylesheets="@../Ressources/stylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label alignment="CENTER" maxHeight="-Infinity" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #c05931;" text="Car Crash Management" textFill="WHITE">
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <font>
+                        <Font name="Bebas Neue Bold" size="30.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                  <FontAwesomeIcon fill="#7c8184" iconName="SEARCH" />
+                        <TextField promptText="Recherche" style="-fx-background-color: transparent; -fx-text-fill: #fff;" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font name="Bebas Neue Light" size="18.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                  <FontAwesomeIcon fill="#7c8184" iconName="DASHBOARD">
+                     <font>
+                        <Font size="14.0" />
+                     </font></FontAwesomeIcon>
+                        <Label text="Tableau de bord" textFill="#7c8184">
+                            <font>
+                                <Font name="Bebas Neue Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                  <FontAwesomeIcon fill="#7c8184" iconName="LIST" />
+                        <Label text="Historique" textFill="#7c8184">
+                            <font>
+                                <Font name="Bebas Neue Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                  <FontAwesomeIcon fill="#7c8184" iconName="CLIPBOARD" />
+                        <Label text="Statistiques" textFill="#7c8184">
+                            <font>
+                                <Font name="Bebas Neue Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                  <FontAwesomeIcon fill="#7c8184" iconName="GEAR" />
+                        <Label text="Paramètres" textFill="#7c8184">
+                            <font>
+                                <Font name="Bebas Neue Regular" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                  <FontAwesomeIcon fill="#7c8184" iconName="USERS" />
+                        <Label text="Administrateurs" textFill="#7c8184">
+                            <font>
+                                <Font name="Bebas Neue Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+            <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <ImageView fitHeight="197.0" fitWidth="200.0" opacity="0.45" preserveRatio="true" VBox.vgrow="ALWAYS">
+               <image>
+                  <Image url="@../Ressources/Logo_Slogan_White.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </ImageView>
+            </children>
+        </VBox>
+        <VBox layoutX="300.0" prefHeight="600.0" prefWidth="724.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+            <HBox prefHeight="60.0" prefWidth="924.0">
+               <children>
+                        <Label text="Tableau de bord" textFill="#7c8184">
+                            <font>
+                                <Font name="Bebas Neue Bold" size="30.0" />
+                            </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                        </Label>
+                  <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <JFXButton contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <FontAwesomeIcon fx:id="bellIcon" fill="#7c8184" iconName="BELL" size="2.2em" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <TableView fx:id="tableView" editable="true" prefHeight="349.0" prefWidth="924.0" stylesheets="@../Ressources/stylesheet.css" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Code" />
+                <TableColumn prefWidth="159.0" text="Horodate" />
+                  <TableColumn prefWidth="75.0" text="Lieu" />
+                  <TableColumn prefWidth="148.0" text="Etat" />
+                  <TableColumn prefWidth="75.0" text="Police" />
+                  <TableColumn prefWidth="75.0" text="Securite Civile" />
+                  <TableColumn prefWidth="75.0" text="Ambulance" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+                <HBox alignment="CENTER" prefHeight="210.0" prefWidth="924.0">
+                    <children>
+                        <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="704.0" styleClass="card-02" stylesheets="@../Ressources/stylesheet.css" HBox.hgrow="ALWAYS">
+                            <children>
+                        <HBox prefHeight="50.0" prefWidth="704.0" style="-fx-background-color: #c05931;">
+                           <children>
+                                      <Label prefHeight="50.0" prefWidth="240.0" text="journal d'informations" textFill="WHITE">
+                                          <font>
+                                              <Font name="Bebas Neue Regular" size="30.0" />
+                                          </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                                      </Label>
+                                        <ProgressIndicator maxHeight="-Infinity" maxWidth="-Infinity" opacity="0.71" prefHeight="30.0" prefWidth="30.0" style="-fx-blend-mode: color-dodge;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </HBox.margin></ProgressIndicator>
+                           </children>
+                        </HBox>
+                        <ScrollPane prefHeight="225.0" prefWidth="704.0" stylesheets="@../Ressources/stylesheet.css" VBox.vgrow="ALWAYS">
+                          <content>
+                            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="1200.0" prefWidth="1000.0">
+                                 <children>
+                                    <Text fx:id="logText" strokeType="OUTSIDE" strokeWidth="0.0" text="22-10-2019 21:37 --&gt; Lancement du Car Crash Management System " wrappingWidth="685.6044921875" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                            </children>
+                        </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #91909A;" styleClass="sidebar" stylesheets="@../Ressources/stylesheet.css">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: #363447;" text="Contact Rapide" textFill="WHITE">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="Bebas Neue Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="95.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="220.0" styleClass="quickbtns" VBox.vgrow="ALWAYS">
+                           <children>
+                              <FontAwesomeIcon fill="#3c3c3c" iconName="TAXI" size="2em">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </FontAwesomeIcon>
+                              <Label text="Police">
+                                 <font>
+                                    <Font name="Bebas Neue Bold" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="220.0" styleClass="quickbtns" VBox.vgrow="ALWAYS">
+                           <children>
+                              <FontAwesomeIcon fill="#3c3c3c" iconName="TRUCK" size="2em" />
+                              <Label text="Securite Civile">
+                                 <font>
+                                    <Font name="Bebas Neue Bold" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="220.0" styleClass="quickbtns" VBox.vgrow="ALWAYS">
+                           <children>
+                              <FontAwesomeIcon fill="#3c3c3c" iconName="MEDKIT" size="2em">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></FontAwesomeIcon>
+                              <Label text="Ambulance">
+                                 <font>
+                                    <Font name="Bebas Neue Bold" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="172.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="220.0" styleClass="quickbtns" VBox.vgrow="ALWAYS">
+                           <children>
+                              <FontAwesomeIcon fill="#3c3c3c" iconName="PLUG" size="2em" />
+                              <Label text="Service de Remorque">
+                                 <font>
+                                    <Font name="Bebas Neue Bold" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="252.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="220.0" styleClass="quickbtns" VBox.vgrow="ALWAYS">
+                           <children>
+                              <FontAwesomeIcon fill="#3c3c3c" iconName="WRENCH" size="2em" />
+                              <Label text="Service Technique">
+                                 <font>
+                                    <Font name="Bebas Neue Bold" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                     </children>
+                  </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
