@@ -172,7 +172,7 @@
                      </HBox.margin>
                         </Label>
                   <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <JFXButton contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" HBox.hgrow="ALWAYS">
+                  <JFXButton contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" onAction="#openAccidentDetail" HBox.hgrow="ALWAYS">
                      <graphic>
                         <FontAwesomeIcon fx:id="bellIcon" fill="#7c8184" iconName="BELL" size="2.2em" />
                      </graphic>

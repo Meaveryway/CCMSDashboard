@@ -1,5 +1,6 @@
 package CCMSDashBoard.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
@@ -14,13 +15,18 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javax.swing.text.TabableView;
@@ -51,6 +57,7 @@ public class UIController implements Initializable
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         makeStageDrageable();
+
         bellIcon.setFill(Color.valueOf("#C05931"));
         RotateTransition transition = new RotateTransition(Duration.seconds(0.3), bellIcon);
         transition.setFromAngle(45);
@@ -88,7 +95,10 @@ public class UIController implements Initializable
         LocalDateTime momentDateTime = LocalDateTime.now();
         Accident momentAccident = new Accident("2019GH", momentLocation, momentDateTime,"Accidents grave avec 3 blessés", false, true);
         tableView.getItems().add(momentAccident);
+
+
     }
+
 
     private void makeStageDrageable() {
         parent.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -113,5 +123,24 @@ public class UIController implements Initializable
             Launch.stage.setOpacity(1.0f);
         });
 
+    }
+
+    public void openAccidentDetail(ActionEvent event) throws IOException
+    {
+        Objects.FocusedAccident = tableView.getItems().get(0);
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("CCMSDashBoard/View/DetailPopup.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("My New Stage Title");
+            stage.setScene(new Scene(root, 600, 800));
+            stage.setResizable(false);
+            stage.show();
+            // Hide this current window (if this is what you want)
+            //((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

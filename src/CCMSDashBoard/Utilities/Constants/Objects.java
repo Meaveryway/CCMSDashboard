@@ -15,91 +15,75 @@ public class Objects
 
     //public static ArrayList<Accident> Accidents = new ArrayList<>(); //Liste des accidents en cours
     public static ObservableList<Accident> Accidents;
+    public static Accident FocusedAccident;
 
-   /*
+    /*
+        validation.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Facture.fxml"));
+        FicheController controller = new FicheController();
 
-
-
-
-    public static void sortUTILISATEURSCONNECTES()
-    {
-        Collections.sort(UTILISATEURSCONNECTES);
-    }
-
-    public static int NbUsersValue = 0;
-    public static Text NbUsers = new Text("0"); //nb d'en ligne
-
-    public static String logValue = LocalDateTime.now().format(DATETIMEFORMAT) + " ---------> Serveur lancé...\n";
-    public static Text LOG = new Text(LocalDateTime.now().format(DATETIMEFORMAT) + " ---------> Serveur lancé...\n");
-    public static void UpdateDisplayData()
-    {
-        NbUsers.setText(""+UTILISATEURSCONNECTES.size());
-        LOG.setText(logValue);
-    }
-
-    //==================================================================================================
-    public static ArrayList<Request> REQUESTS = new ArrayList<>();
-
-
-
-
-    //==================================================================================================
-
-    public static void sortPHARMACIES()
-    {
-        Collections.sort(PHARMACIES);
-    }
-
-
-
-    public static Pharmacie RecherchePharm(int ID)
-    {
-        sortPHARMACIES();
-        Comparator<Pharmacie> c = new Comparator<Pharmacie>()
-        {
-            public int compare(Pharmacie u1, Pharmacie u2)
-            {
-                Integer ID1 = new Integer(u1.getID());
-                Integer ID2 = new Integer(u2.getID());
-                return ID1.compareTo(ID2);
+        JFXDialog facture = new JFXDialog(notif, loader.load(), JFXDialog.DialogTransition.CENTER); //La fiche est mise dans une boite de dialogue, qui est affiché sur notre StackPane
+        facture.setOverlayClose(true); //pas de fermeture de la boite si on clique ailleurs
+        notif.setDisable(false); //Affichage du StackPane
+        facture.show();           //Affichage de la boite
+        facture.setOnDialogClosed(new EventHandler<JFXDialogEvent>() {
+            @Override
+            public void handle(JFXDialogEvent event) {
+                notif.setDisable(true);
             }
-        };
-
-        int pos = Collections.binarySearch(PHARMACIES, new Pharmacie(ID), c);
-        if(pos >= 0) {
-            System.out.println("Pharmacie " + PHARMACIES.get(pos).getNomPharma() + " connectée.");
-            return PHARMACIES.get(pos);
-        }
-        else
-        {
-            System.out.println("Pharmacie non identifiée.");
-            return null;
-        }
-    }
-
-    public static Pharmacie RecherchePharmacieConnecté(int ID)
+        });
+    }catch (IOException exep)
     {
-        sortUTILISATEURSCONNECTES();
-        Comparator<Pharmacie> c = new Comparator<Pharmacie>()
-        {
-            public int compare(Pharmacie u1, Pharmacie u2)
-            {
-                Integer ID1 = new Integer(u1.getID());
-                Integer ID2 = new Integer(u2.getID());
-                return ID1.compareTo(ID2);
-            }
-        };
-
-        int pos = Collections.binarySearch(UTILISATEURSCONNECTES, new Pharmacie(ID), c);
-        if(pos >= 0) {
-            System.out.println("Pharmacie " + PHARMACIES.get(pos).getNomPharma() + " est active");
-            return PHARMACIES.get(pos);
-        }
-        else
-        {
-            System.out.println("Pharmacie non connecté.");
-            return null;
-        }
+        System.out.println("fiche ERROR: " + exep);
+        exep.printStackTrace();
     }
-*/
+});
+
+
+
+
+
+
+
+
+
+rech.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, event -> {
+                String res = barreRecherche.getText();
+                try {
+                    Themes.produitFiche = Connect.recherche("NOM_COMMERCIAL", res, ConnectionManager.getConnection() ); //Recherche dans la BDD
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Fiche.fxml"));
+                    FicheController controller = new FicheController();
+                    loader.setController(controller);
+                    ScrollPane pane = new ScrollPane(); //On a chargé une fiche (remplie avec les donneé du medicament resultat de recherche) dans un Pane
+
+                    pane.setContent(loader.load());
+                    pane.setMaxWidth(600);
+                    pane.setMaxHeight(500);
+                    pane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); //enleve la barre de defilement horizontale (setVbar pour la verticale)
+                    pane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+                    JFXDialog fiche = new JFXDialog(notif, pane, JFXDialog.DialogTransition.CENTER); //La fiche est mise dans une boite de dialogue, qui est affiché sur notre StackPane
+                    fiche.setOnDialogClosed(new EventHandler<JFXDialogEvent>() {
+                                                @Override
+                                                public void handle(JFXDialogEvent event) {
+                                                    notif.setDisable(true);
+                                                }
+                                            });
+                    Themes.NOTIF = notif;
+                    notif.setDisable(false);
+                    fiche.show();           //Affichage de la boite
+                }catch (IOException exep)
+                {
+                    System.out.println("fiche ERROR: " + exep);
+                    exep.printStackTrace();
+                }
+            });
+
+
+
+            */
+
+
 }
