@@ -8,6 +8,12 @@ import java.io.InputStreamReader;
 import java.io.DataOutputStream;
 import java.io.BufferedReader;
 
+import CCMSDashBoard.Model.Accident;
+import CCMSDashBoard.Utilities.Constants.Objects;
+import CCMSDashBoard.Utilities.Protocols.Parsers;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 /**
  * Created by Meave Dregonhive on 22/08/2019.
  */
@@ -32,7 +38,7 @@ public class BackendManager implements Runnable
     {
         String USER_AGENT = "Mozilla/5.0";
 
-        String url = "https://geniustraffic.herokuapp.com/poll"; //URL to send request to
+        String url = "https://geniustraffic.herokuapp.com/poll_web"; //URL to send request to
         URL objurl = new URL(url);
 
 
@@ -64,8 +70,17 @@ public class BackendManager implements Runnable
                 //print full result
                 System.out.println(response.toString());
                 if (responseCode == 200)
-                    if(response.toString().equals("0"))
-                        System.out.println("received nothing");
+                {
+
+                    JSONParser parser = new JSONParser();
+                    System.out.println("dile");
+                    JSONObject accidentObjectToParse = (JSONObject)parser.parse(response.toString());
+                    Accident accident = Parsers.parseAccidentObject(accidentObjectToParse);
+                    accident.setJsonObject(accidentObjectToParse);
+                    System.out.println("backend = " + accident.getJsonObject().toString());
+                    Objects.Accidents.add(accident);
+                }
+
                 System.out.println("Showing alert");
             }
             catch(Exception exception)

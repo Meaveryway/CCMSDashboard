@@ -21,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -83,6 +84,8 @@ public class UIController implements Initializable
         dateTime.setCellValueFactory(new PropertyValueFactory<Accident, String>("dateTime"));
         status.setCellValueFactory(new PropertyValueFactory<Accident, String>("generalStatus"));
 
+
+
         policeStatus.setCellValueFactory(new PropertyValueFactory<Accident, String>("policeStatus"));
         civilSecurityStatus.setCellValueFactory(new PropertyValueFactory<Accident, String>("civilSecurityStatus"));
         medicsStatus.setCellValueFactory(new PropertyValueFactory<Accident, String>("medicsStatus"));
@@ -95,6 +98,22 @@ public class UIController implements Initializable
         LocalDateTime momentDateTime = LocalDateTime.now();
         Accident momentAccident = new Accident("2019GH", momentLocation, momentDateTime,"Accidents grave avec 3 blessés", false, true);
         tableView.getItems().add(momentAccident);
+
+
+        //To open popup on row click
+        tableView.setRowFactory( tv -> {
+            TableRow<Accident> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) )
+                {
+                    Accident rowData = row.getItem();
+                    Objects.FocusedAccident = rowData;
+                    openAccidentDetailPopup();
+
+                }
+            });
+            return row ;
+        });
 
 
     }
@@ -127,7 +146,24 @@ public class UIController implements Initializable
 
     public void openAccidentDetail(ActionEvent event) throws IOException
     {
-        Objects.FocusedAccident = tableView.getItems().get(0);
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("CCMSDashBoard/View/DetailPopup.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("My New Stage Title");
+            stage.setScene(new Scene(root, 600, 800));
+            stage.setResizable(false);
+            stage.show();
+            // Hide this current window (if this is what you want)
+            //((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openAccidentDetailPopup()
+    {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("CCMSDashBoard/View/DetailPopup.fxml"));

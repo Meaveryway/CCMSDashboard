@@ -1,6 +1,7 @@
 package CCMSDashBoard.Model;
 
 import CCMSDashBoard.Utilities.Constants.Values;
+import org.json.simple.JSONObject;
 
 import java.sql.Time;
 import java.time.LocalDateTime;
@@ -21,6 +22,8 @@ public class Accident
         private Status civilSecurityStatus;
         private Status medicsStatus;
         private Status towingStatus;
+
+        private JSONObject jsonObject;
 
         private boolean requiresRettungsgasse; //whether or not this location is a highway for instance, which will notify nearby users to launch the Rettungsgasse procedure.
         private boolean requiresPanels; //whether or not deploying panels around the accident is necessary to avoid a curiosity jam.
@@ -111,5 +114,15 @@ public class Accident
 
         public boolean isRequiresPanels() {
             return requiresPanels;
+        }
+
+        public void setJsonObject(JSONObject jsonObject)
+        {
+            this.jsonObject = jsonObject;
+        }
+
+        public JSONObject getJsonObject()
+        {
+            return jsonObject;
         }
     }
