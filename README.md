@@ -10,4 +10,4 @@ The Dashboard is just a prototype desktop application made using Java/JavaFX.
 
 This was part of a school project assignment (and was done under the name of a fictive company "GeniusByte").
 
-![Dashboard UI]((src/CCMSDashBoard/Ressources/Prototype_CG.png?raw=true "UI of the Dashboard (prototype)"))
+![Dashboard UI](src/CCMSDashBoard/Ressources/Prototype_CG.png?raw=true "UI of the Dashboard (prototype)")
